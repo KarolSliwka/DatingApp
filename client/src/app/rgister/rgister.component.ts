@@ -1,6 +1,7 @@
 import { Component, inject, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rgister',
@@ -10,6 +11,7 @@ import { AccountService } from '../_services/account.service';
 })
 export class RgisterComponent {
   private accountService = inject(AccountService);
+  private toastr = inject(ToastrService);
   // @Input() usersFromHomeComponent: any; old approach 
   usersFromHomeComponent = input.required<any>();
   // old approach for child to parent
@@ -23,7 +25,7 @@ export class RgisterComponent {
         console.log(response);
         this.cancel();
       },
-      error: error => console.log(error)
+      error: error => this.toastr.error(error.error)
     });
   }
 

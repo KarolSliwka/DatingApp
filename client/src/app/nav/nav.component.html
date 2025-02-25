@@ -1,25 +1,27 @@
-<nav class="navbar navbar-expand-md navbar-white fixed-top bg-white shadow-sm">
+<nav class="navbar navbar-expand-md fixed-top bg-dark text-light shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="#">{{ title }}</a>
-        @if (acocuntService.currentUser()) {
+        <a class="navbar-brand text-light" href="#">{{ title }}</a>
+
         <ul class="navbar-nav me-auto">
+            @if (acocuntService.currentUser()) {
             <li class="nav-item">
-                <a class="nav-link">Matches</a>
+                <a routerLink="/members" routerLinkActive="active" class="nav-link text-light">Matches</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link">Lists</a>
+                <a routerLink="/lists" routerLinkActive="active" class="nav-link text-light">Lists</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link">Messages</a>
+                <a routerLink="/messages" routerLinkActive="active" class="nav-link text-light">Messages</a>
             </li>
+            }
         </ul>
-        }
 
         @if (acocuntService.currentUser()) {
         <div dropdown class="dropdown">
-            <a dropdownToggle class="dropdown-toggle text-dark">Welcome user</a>
+            <a dropdownToggle class="dropdown-toggle text-white">Welcome
+                {{ acocuntService.currentUser()?.username | titlecase }}</a>
             <div *dropdownMenu class="dropdown-menu">
-                <a class="dropdown-item">Edit profile</a>
+                <a routerLink="/members" class="dropdown-item">Edit profile</a>
                 <div class="dorpodown-divider"></div>
                 <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
@@ -32,7 +34,7 @@
                 placeholder="Username" autocomplete="off">
             <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
                 placeholder="Password" autocomplete="off">
-            <button class="btn btn-outline-success" type="submit">Login</button>
+            <button class="btn btn-primary" type="submit">Login</button>
         </form>
         }
     </div>
