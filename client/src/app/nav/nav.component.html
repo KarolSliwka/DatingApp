@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-white fixed-top bg-white shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="#">App</a>
-        @if (loggedIn) {
+        <a class="navbar-brand" href="#">{{ title }}</a>
+        @if (acocuntService.currentUser()) {
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
                 <a class="nav-link">Matches</a>
@@ -15,7 +15,7 @@
         </ul>
         }
 
-        @if (loggedIn) {
+        @if (acocuntService.currentUser()) {
         <div dropdown class="dropdown">
             <a dropdownToggle class="dropdown-toggle text-dark">Welcome user</a>
             <div *dropdownMenu class="dropdown-menu">
@@ -26,7 +26,7 @@
         </div>
         }
 
-        @if (!loggedIn) {
+        @if (!acocuntService.currentUser()) {
         <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
             <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text"
                 placeholder="Username" autocomplete="off">
