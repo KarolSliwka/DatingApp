@@ -12,7 +12,12 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <p>Register form goes here</p>
+                    <!--app-rgister [usersFromHomeComponent]="users"></app-rgister-->
+                    <!-- old approach to communicate between child to parent <app-rgister [usersFromHomeComponent]="users"
+                        (cancelRegister)="cancelRegisterMode($event)"></app-rgister-->
+                    <app-rgister [usersFromHomeComponent]="users"
+                        (cancelRegister)="cancelRegisterMode($event)"></app-rgister>
+
                 </div>
             </div>
         </div>
